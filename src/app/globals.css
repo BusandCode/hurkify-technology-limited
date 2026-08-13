@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #14091f;
+
+  /* Brand palette (fixed per brand spec) */
+  --color-primary: #3d1f52;      /* deep violet — enterprise, trust */
+  --color-primary-foreground: #ffffff;
+  --color-secondary: #1a0b2e;    /* near-black plum — hero/dark sections */
+  --color-accent: #ff6f61;       /* coral — CTAs, highlights only */
+  --color-accent-foreground: #1a0b2e;
+
+  /* Neutral scale tinted from the primary hue, not generic gray */
+  --color-mist-50: #faf8fc;
+  --color-mist-100: #f2eef7;
+  --color-mist-200: #e3dbec;
+  --color-mist-400: #a794b8;
+  --color-mist-600: #6e5a82;
+  --color-mist-800: #2c1740;
+
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-accent-foreground: var(--color-accent-foreground);
+
+  --color-mist-50: var(--color-mist-50);
+  --color-mist-100: var(--color-mist-100);
+  --color-mist-200: var(--color-mist-200);
+  --color-mist-400: var(--color-mist-400);
+  --color-mist-600: var(--color-mist-600);
+  --color-mist-800: var(--color-mist-800);
+
+  --font-display: var(--font-manrope);
+  --font-sans: var(--font-inter);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
