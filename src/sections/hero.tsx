@@ -60,10 +60,14 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] scroll-mt-20 items-center overflow-hidden bg-primary pb-16 pt-24 sm:pb-20 sm:pt-28 lg:min-h-screen"
+      className="relative flex min-h-[100svh] scroll-mt-20 items-center bg-primary pb-16 pt-24 sm:pb-20 sm:pt-28 lg:min-h-screen"
     >
-      {/* Swipeable background image carousel */}
-      <div className="absolute inset-0">
+      {/* Swipeable background image carousel — overflow-hidden lives HERE,
+          scoped to just this layer, so it clips the drag/slide animation
+          without ever clipping (and scroll-locking) the text content below
+          on mobile. Putting overflow-hidden on the section itself is what
+          was cutting content off and killing scroll on phones. */}
+      <div className="absolute inset-0 overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={index}
@@ -71,6 +75,10 @@ export function Hero() {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
+            // Lets the browser take over the gesture the moment it reads as
+            // vertical, so mobile scrolling never gets stuck behind the
+            // horizontal swipe carousel.
+            dragDirectionLock
             onDragEnd={handleDragEnd}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -154,14 +162,14 @@ export function Hero() {
             </Link>
           </div>
 
-          <div className="mt-10 flex flex-nowrap gap-3 overflow-x-auto pb-1 sm:mt-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mt-10 flex flex-col lg:flex-row items-center lg:items-start lg:flex-nowrap gap-3 overflow-x-auto pb-1 sm:mt-12 scrollbar-none [&::-webkit-scrollbar]:hidden">
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="flex shrink-0 items-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm"
+                className="flex shrink-0 items-center justify-center text-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm"
               >
                 <Icon size={15} className="shrink-0 text-white" />
-                <span className="whitespace-nowrap text-xs font-semibold text-white">
+                <span className="whitespace-nowrap text-xs font-semibold text-white text-center">
                   {label}
                 </span>
               </div>
@@ -186,7 +194,7 @@ export function Hero() {
               </span>
             </div>
 
-            <div className="grid grid-cols-3 gap-2 p-3 sm:gap-3 sm:p-4">
+            <div className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-3 sm:gap-3 sm:p-4">
               <div className="col-span-2 rounded-xl bg-gradient-to-br from-primary to-secondary p-3.5 sm:p-4">
                 <p className="text-[10px] font-medium uppercase tracking-wider text-white/50 sm:text-[11px]">
                   HEFAMAA Renewal Status
@@ -202,7 +210,7 @@ export function Hero() {
                 </p>
               </div>
 
-              <div className="rounded-xl bg-mist-50 p-3.5 sm:p-4">
+              <div className="col-span-2 rounded-xl bg-mist-50 p-3.5 sm:col-span-1 sm:p-4">
                 <p className="text-[10px] font-medium uppercase tracking-wider text-mist-600 sm:text-[11px]">
                   Facilities
                 </p>
@@ -214,7 +222,7 @@ export function Hero() {
                 </p>
               </div>
 
-              <div className="col-span-3 rounded-xl bg-mist-50 p-3.5 sm:p-4">
+              <div className="col-span-2 rounded-xl bg-mist-50 p-3.5 sm:col-span-3 sm:p-4">
                 <p className="text-[10px] font-medium uppercase tracking-wider text-mist-600 sm:text-[11px]">
                   EMR Uptime
                 </p>

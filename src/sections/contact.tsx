@@ -35,14 +35,14 @@ const CONTACT_CHANNELS = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+234 000 000 0000",
-    href: "tel:+2340000000000",
+    value: "+234 9045 083 581",
+    href: "tel: +2349045083581",
   },
   {
     icon: MessageCircle,
     label: "WhatsApp",
     value: "Chat with our team",
-    href: "https://wa.me/2340000000000",
+    href: "https://wa.me/2349045083581",
   },
 ];
 
