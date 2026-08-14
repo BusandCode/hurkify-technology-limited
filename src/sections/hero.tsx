@@ -19,9 +19,9 @@ const TRUST_BADGES = [
 // substitute is wired in here since it can't be verified against that
 // requirement — see the note in the chat reply for details.
 const SLIDES = [
-  { src: "/hero/slide-1.jpg", alt: "Hurkify team at work in a Lagos office" },
-  { src: "/hero/slide-2.jpg", alt: "Hurkify engineers reviewing a system" },
-  { src: "/hero/slide-3.jpg", alt: "Hurkify team in a client meeting" },
+  { src: "/hero/slide-1.jpeg", alt: "Hurkify team at work in a Lagos office" },
+  { src: "/hero/slide-2.jpeg", alt: "Hurkify engineers reviewing a system" },
+  { src: "/hero/slide-3.png", alt: "Hurkify team in a client meeting" },
 ];
 
 const SWIPE_THRESHOLD = 60;
