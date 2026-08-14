@@ -2,22 +2,22 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #14091f;
+  --foreground: #6522c7;
 
   /* Brand palette (fixed per brand spec) */
-  --color-primary: #3d1f52;      /* deep violet — enterprise, trust */
+  --color-primary: #6522c7;      /* vivid violet — matches logo mark */
   --color-primary-foreground: #ffffff;
   --color-secondary: #1a0b2e;    /* near-black plum — hero/dark sections */
   --color-accent: #ff6f61;       /* coral — CTAs, highlights only */
   --color-accent-foreground: #1a0b2e;
 
-  /* Neutral scale tinted from the primary hue, not generic gray */
-  --color-mist-50: #faf8fc;
-  --color-mist-100: #f2eef7;
-  --color-mist-200: #e3dbec;
-  --color-mist-400: #a794b8;
-  --color-mist-600: #6e5a82;
-  --color-mist-800: #2c1740;
+  /* Neutral scale tinted from the new primary hue, not generic gray */
+  --color-mist-50: #faf9fa;
+  --color-mist-100: #f2f0f4;
+  --color-mist-200: #e2dcea;
+  --color-mist-400: #a997c4;
+  --color-mist-600: #6e509b;
+  --color-mist-800: #2f1e48;
 
   --radius: 0.75rem;
 }

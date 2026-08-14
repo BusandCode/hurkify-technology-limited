@@ -15,72 +15,26 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen scroll-mt-20 items-center overflow-hidden bg-secondary pt-28 pb-20"
+      className="relative flex min-h-screen scroll-mt-20 items-center overflow-hidden bg-primary pt-28 pb-20"
     >
-      {/* Ambient background: slowly drifting radial glow, no loud gradients */}
-      <motion.div
+      {/* Static ambient glow — subtle, no orange, no motion */}
+      <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 50% at 80% 10%, rgba(255,111,97,0.14) 0%, transparent 60%), radial-gradient(50% 40% at 10% 90%, rgba(61,31,82,0.55) 0%, transparent 65%)",
-          backgroundSize: "160% 160%",
-        }}
-        animate={{
-          backgroundPosition: [
-            "80% 10%, 10% 90%",
-            "70% 20%, 20% 80%",
-            "85% 5%, 15% 95%",
-            "80% 10%, 10% 90%",
-          ],
-        }}
-        transition={{
-          duration: 22,
-          ease: "easeInOut",
-          repeat: Infinity,
+            "radial-gradient(55% 45% at 85% 5%, rgba(255,255,255,0.06) 0%, transparent 60%), radial-gradient(50% 40% at 10% 95%, rgba(26,11,46,0.6) 0%, transparent 65%)",
         }}
       />
 
-      {/* Soft floating orbs for extra depth/motion */}
-      <motion.div
+      {/* Faint static grid, no animation */}
+      <div
         aria-hidden
-        className="pointer-events-none absolute -top-24 right-[10%] h-72 w-72 rounded-full blur-3xl"
-        style={{ background: "rgba(255,111,97,0.18)" }}
-        animate={{
-          x: [0, 30, -10, 0],
-          y: [0, 20, -15, 0],
-          scale: [1, 1.08, 0.96, 1],
-        }}
-        transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
-      />
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute bottom-[-6rem] left-[8%] h-80 w-80 rounded-full blur-3xl"
-        style={{ background: "rgba(61,31,82,0.35)" }}
-        animate={{
-          x: [0, -25, 15, 0],
-          y: [0, -15, 20, 0],
-          scale: [1, 1.06, 0.98, 1],
-        }}
-        transition={{ duration: 20, ease: "easeInOut", repeat: Infinity, delay: 1 }}
-      />
-
-      {/* Moving grid */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.07]"
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
-        }}
-        animate={{
-          backgroundPosition: ["0px 0px", "56px 56px"],
-        }}
-        transition={{
-          duration: 14,
-          ease: "linear",
-          repeat: Infinity,
         }}
       />
 
@@ -96,7 +50,7 @@ export function Hero() {
 
           <h1 className="mt-6 text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">
             Systems that hold up when
-            <span className="text-accent"> healthcare and compliance</span>{" "}
+            <span className="text-white/90"> healthcare and compliance</span>{" "}
             can&rsquo;t afford to fail.
           </h1>
 
@@ -130,7 +84,7 @@ export function Hero() {
           <div className="mt-12 flex flex-wrap gap-x-8 gap-y-4">
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-2.5">
-                <Icon size={16} className="shrink-0 text-accent" />
+                <Icon size={16} className="shrink-0 text-white/50" />
                 <span className="text-xs font-medium text-white/55">
                   {label}
                 </span>
@@ -146,12 +100,12 @@ export function Hero() {
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
           className="relative"
         >
-          <div className="relative rounded-2xl border border-white/10 bg-white/[0.03] p-2 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.6)] backdrop-blur-sm">
-            <div className="flex items-center gap-1.5 border-b border-white/10 px-3 py-2.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              <span className="h-2.5 w-2.5 rounded-full bg-white/20" />
-              <span className="ml-3 text-[11px] text-white/30">
+          <div className="relative rounded-2xl border border-mist-200 bg-white p-2 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.35)]">
+            <div className="flex items-center gap-1.5 border-b border-mist-200 px-3 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-mist-200" />
+              <span className="h-2.5 w-2.5 rounded-full bg-mist-200" />
+              <span className="h-2.5 w-2.5 rounded-full bg-mist-200" />
+              <span className="ml-3 text-[11px] text-mist-400">
                 compliance.hurkify.app
               </span>
             </div>
@@ -165,56 +119,33 @@ export function Hero() {
                   Compliant
                 </p>
                 <div className="mt-4 h-1.5 w-full rounded-full bg-white/10">
-                  <div className="h-1.5 w-4/5 rounded-full bg-accent" />
+                  <div className="h-1.5 w-4/5 rounded-full bg-white/50" />
                 </div>
                 <p className="mt-2 text-[11px] text-white/40">
                   Next renewal in 84 days
                 </p>
               </div>
 
-              <div className="rounded-xl bg-white/5 p-4">
-                <p className="text-[11px] font-medium uppercase tracking-wider text-white/50">
+              <div className="rounded-xl bg-mist-50 p-4">
+                <p className="text-[11px] font-medium uppercase tracking-wider text-mist-600">
                   Facilities
                 </p>
-                <p className="mt-2 text-2xl font-bold text-white">12</p>
-                <p className="mt-1 text-[11px] text-emerald-400/80">
+                <p className="mt-2 text-2xl font-bold text-secondary">12</p>
+                <p className="mt-1 text-[11px] text-emerald-600">
                   +2 this quarter
                 </p>
               </div>
 
-              <div className="col-span-3 rounded-xl bg-white/5 p-4">
-                <p className="text-[11px] font-medium uppercase tracking-wider text-white/50">
+              <div className="col-span-3 rounded-xl bg-mist-50 p-4">
+                <p className="text-[11px] font-medium uppercase tracking-wider text-mist-600">
                   EMR Uptime
                 </p>
                 <div className="mt-3 flex items-end gap-1.5">
                   {[40, 55, 48, 70, 62, 80, 74, 90, 85, 96].map((h, i) => (
-                    <motion.div
+                    <div
                       key={i}
-                      className="w-full rounded-sm bg-accent/70"
-                      initial={{ height: 0, opacity: 0.4 }}
-                      animate={{
-                        height: [
-                          `${h * 0.4}px`,
-                          `${h * 0.4 * 1.15}px`,
-                          `${h * 0.4 * 0.9}px`,
-                          `${h * 0.4}px`,
-                        ],
-                        opacity: [0.6, 1, 0.75, 0.9],
-                      }}
-                      transition={{
-                        height: {
-                          duration: 3.2,
-                          ease: "easeInOut",
-                          repeat: Infinity,
-                          delay: i * 0.12,
-                        },
-                        opacity: {
-                          duration: 3.2,
-                          ease: "easeInOut",
-                          repeat: Infinity,
-                          delay: i * 0.12,
-                        },
-                      }}
+                      className="w-full rounded-sm bg-primary/30"
+                      style={{ height: `${h * 0.4}px` }}
                     />
                   ))}
                 </div>
@@ -224,7 +155,7 @@ export function Hero() {
 
           {/* floating badge */}
           <div className="absolute -bottom-5 -left-5 hidden items-center gap-2 rounded-xl border border-white/10 bg-secondary/90 px-4 py-3 shadow-lg backdrop-blur sm:flex">
-            <ShieldCheck size={18} className="text-accent" />
+            <ShieldCheck size={18} className="text-white/70" />
             <span className="text-xs font-semibold text-white">
               Audit-ready, always
             </span>

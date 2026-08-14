@@ -32,9 +32,25 @@ export function HealthcareSupport() {
   return (
     <section
       id="healthcare-support"
-      className="scroll-mt-20 bg-secondary py-24 sm:py-28"
+      className="relative scroll-mt-20 overflow-hidden bg-primary py-24 sm:py-28"
     >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      {/* Decorative background — same visual language as Hero/Services/Contact */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+        }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 -right-16 h-96 w-96 rounded-full opacity-40 blur-3xl"
+        style={{ background: "rgba(26,11,46,0.5)" }}
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
@@ -42,14 +58,14 @@ export function HealthcareSupport() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55, ease: "easeOut" }}
           >
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-white">
               Healthcare Support
             </span>
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+            <h2 className="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
               HEFAMAA compliance and EMR, handled by people who&rsquo;ve done
               it before.
             </h2>
-            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/60">
+            <p className="mt-5 max-w-md text-[15px] leading-relaxed text-white/75">
               Facility registration and renewal are recurring operational
               risk. We manage the paperwork and the systems, so your clinical
               team stays focused on patients.
@@ -74,13 +90,15 @@ export function HealthcareSupport() {
                   ease: "easeOut",
                   delay: i * 0.06,
                 }}
-                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 transition-colors hover:border-accent/30 hover:bg-white/[0.06]"
+                className="rounded-2xl border border-mist-200 bg-white p-6 shadow-[0_16px_36px_-20px_rgba(0,0,0,0.35)] transition-transform duration-300 hover:-translate-y-1"
               >
-                <Icon size={20} className="text-accent" />
-                <h3 className="mt-4 font-display text-sm font-bold text-white">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <Icon size={20} />
+                </div>
+                <h3 className="mt-4 font-display text-sm font-bold text-secondary">
                   {title}
                 </h3>
-                <p className="mt-2 text-[13px] leading-relaxed text-white/55">
+                <p className="mt-2 text-[13px] leading-relaxed text-mist-600">
                   {body}
                 </p>
               </motion.div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/nav-links";
@@ -23,16 +24,20 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-secondary/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(255,255,255,0.08)]"
+          ? "bg-primary/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(255,255,255,0.08)]"
           : "bg-transparent"
       )}
     >
       <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <a href="#home" className="flex items-center gap-2">
-          <span className="font-display text-lg font-extrabold tracking-tight text-white">
-            Hurkify
-          </span>
-          <span className="hidden h-1.5 w-1.5 rounded-full bg-accent sm:inline-block" />
+        <a href="#home" className="flex items-center">
+          <Image
+            src="/hurkify.png"
+            alt="Hurkify Technology Limited"
+            width={44}
+            height={44}
+            priority
+            className="h-10 w-10 rounded-lg object-cover sm:h-11 sm:w-11"
+          />
         </a>
 
         <ul className="hidden items-center gap-8 lg:flex">
@@ -72,7 +77,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden bg-secondary lg:hidden"
+            className="overflow-hidden bg-primary lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 pb-6">
               {NAV_LINKS.map((link) => (
