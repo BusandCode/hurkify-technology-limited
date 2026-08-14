@@ -8,13 +8,22 @@ import {
   ShieldCheck,
   Globe,
   Cloud,
+  Palette,
   ArrowUpRight,
   Clock,
   Headset,
   Repeat,
+  type LucideIcon,
 } from "lucide-react";
 
-const SERVICES = [
+type Service = {
+  icon: LucideIcon;
+  title: string;
+  body: string;
+  image?: string;
+};
+
+const SERVICES: Service[] = [
   {
     icon: Workflow,
     title: "IT Consulting & Digital Transformation",
@@ -49,6 +58,13 @@ const SERVICES = [
     body: "Infrastructure setup, monitoring, and responsive technical support that keeps critical systems online.",
     image:
       "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop",
+  },
+  {
+    icon: Palette,
+    title: "Branding",
+    body: "Company branding — visual identity, logo systems, and brand guidelines that make your business instantly recognizable across every touchpoint.",
+    image:
+      "https://images.unsplash.com/photo-1690228254548-31ef53e40cd1?q=80&w=800&auto=format&fit=crop",
   },
 ];
 
@@ -97,16 +113,6 @@ export function Services() {
               Enterprise services, delivered without enterprise overhead.
             </h2>
           </div>
-
-          {/* Decorative service count badge */}
-          {/* <div className="flex items-center gap-3 self-start rounded-2xl border border-mist-200 bg-white px-5 py-3 shadow-[0_12px_24px_-16px_rgba(61,31,82,0.2)] sm:self-auto">
-            <span className="font-display text-2xl font-extrabold text-primary">
-              {SERVICES.length}
-            </span>
-            <span className="max-w-[7rem] text-[11px] leading-tight text-mist-600">
-              core service lines under one roof
-            </span>
-          </div> */}
         </div>
 
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -121,14 +127,26 @@ export function Services() {
             >
               {/* Photo strip — overflow-hidden lives here, not on the card */}
               <div className="relative h-36 w-full overflow-hidden rounded-t-2xl">
-                <Image
-                  src={image}
-                  alt={title}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/10 to-transparent" />
+                {image ? (
+                  <>
+                    <Image
+                      src={image}
+                      alt={title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/70 via-secondary/10 to-transparent" />
+                  </>
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary to-secondary">
+                    <Icon
+                      size={32}
+                      strokeWidth={1.5}
+                      className="text-white/25 transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Icon badge — a sibling of the photo, so it isn't clipped by it */}
