@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion, type PanInfo } from "framer-motion";
 import { ArrowRight, ShieldCheck, Stethoscope, Cpu } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -11,23 +13,89 @@ const TRUST_BADGES = [
   { icon: Cpu, label: "Enterprise IT delivery" },
 ];
 
+// PLACEHOLDER SLOTS — drop real photos into /public/hero/ with these
+// exact filenames. Per brief: Black Nigerian professionals, Lagos
+// corporate aesthetic, modern African tech environment. No stock photo
+// substitute is wired in here since it can't be verified against that
+// requirement — see the note in the chat reply for details.
+const SLIDES = [
+  { src: "/hero/slide-1.jpg", alt: "Hurkify team at work in a Lagos office" },
+  { src: "/hero/slide-2.jpg", alt: "Hurkify engineers reviewing a system" },
+  { src: "/hero/slide-3.jpg", alt: "Hurkify team in a client meeting" },
+];
+
+const SWIPE_THRESHOLD = 60;
+
 export function Hero() {
+  const [index, setIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+
+  function goTo(next: number) {
+    if (next === index) return;
+    setDirection(next > index ? 1 : -1);
+    setIndex((next + SLIDES.length) % SLIDES.length);
+  }
+
+  function handleDragEnd(
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) {
+    if (info.offset.x <= -SWIPE_THRESHOLD) {
+      goTo(index + 1);
+    } else if (info.offset.x >= SWIPE_THRESHOLD) {
+      goTo(index - 1);
+    }
+  }
+
+  // Auto-advance the background slide every 5s.
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setIndex((current) => (current + 1) % SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section
       id="home"
       className="relative flex min-h-screen scroll-mt-20 items-center overflow-hidden bg-primary pt-28 pb-20"
     >
-      {/* Static ambient glow — subtle, no orange, no motion */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(55% 45% at 85% 5%, rgba(255,255,255,0.06) 0%, transparent 60%), radial-gradient(50% 40% at 10% 95%, rgba(26,11,46,0.6) 0%, transparent 65%)",
-        }}
-      />
+      {/* Swipeable background image carousel */}
+      <div className="absolute inset-0">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={index}
+            custom={direction}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={handleDragEnd}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="absolute inset-0 cursor-grab active:cursor-grabbing"
+          >
+            <Image
+              src={SLIDES[index].src}
+              alt={SLIDES[index].alt}
+              fill
+              priority={index === 0}
+              className="pointer-events-none object-cover"
+              sizes="100vw"
+            />
+          </motion.div>
+        </AnimatePresence>
 
-      {/* Faint static grid, no animation */}
+        {/* Scrim so headline text stays legible — anchored to the left
+            where the text sits, much lighter elsewhere so the photo
+            actually shows through instead of being hidden under it */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/75 via-primary/35 to-primary/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
+      </div>
+
+      {/* Faint static grid, sits above the photo/overlay */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
@@ -38,7 +106,7 @@ export function Hero() {
         }}
       />
 
-      <div className="relative mx-auto grid w-full max-w-7xl gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl gap-14 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
