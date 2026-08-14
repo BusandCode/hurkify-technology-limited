@@ -36,7 +36,7 @@ export function Navbar() {
             width={44}
             height={44}
             priority
-            className="h-10 w-10 rounded-lg object-cover sm:h-11 sm:w-11"
+            className="h-20 w-20 object-cover sm:h-11 sm:w-11"
           />
         </a>
 
