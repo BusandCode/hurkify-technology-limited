@@ -31,7 +31,7 @@ const STATS = [
 export function About() {
   return (
     <section id="about" className="scroll-mt-20 bg-white py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl px-6 lg:px-0">
         <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
