@@ -35,7 +35,7 @@ export function Footer() {
               Get in touch
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li>hello@hurkify.com</li>
+              <li>support@hurkify.com</li>
               <li>Lagos, Nigeria</li>
             </ul>
           </div>

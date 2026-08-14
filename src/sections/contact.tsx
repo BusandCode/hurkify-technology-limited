@@ -29,8 +29,8 @@ const CONTACT_CHANNELS = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@hurkify.com",
-    href: "mailto:hello@hurkify.com",
+    value: "support@hurkify.com",
+    href: "mailto:support@hurkify.com",
   },
   {
     icon: Phone,

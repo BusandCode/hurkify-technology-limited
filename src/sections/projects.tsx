@@ -64,7 +64,7 @@ export function Projects() {
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PROJECTS.map(({ tag, title, body, image }, i) => (
             <motion.a
-              href="#contact"
+              href="#projects"
               key={title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
