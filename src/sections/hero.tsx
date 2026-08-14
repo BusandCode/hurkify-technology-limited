@@ -17,22 +17,70 @@ export function Hero() {
       id="home"
       className="relative flex min-h-screen scroll-mt-20 items-center overflow-hidden bg-secondary pt-28 pb-20"
     >
-      {/* Ambient background: subtle radial glow + grid, no loud gradients */}
-      <div
+      {/* Ambient background: slowly drifting radial glow, no loud gradients */}
+      <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
           background:
             "radial-gradient(60% 50% at 80% 10%, rgba(255,111,97,0.14) 0%, transparent 60%), radial-gradient(50% 40% at 10% 90%, rgba(61,31,82,0.55) 0%, transparent 65%)",
+          backgroundSize: "160% 160%",
+        }}
+        animate={{
+          backgroundPosition: [
+            "80% 10%, 10% 90%",
+            "70% 20%, 20% 80%",
+            "85% 5%, 15% 95%",
+            "80% 10%, 10% 90%",
+          ],
+        }}
+        transition={{
+          duration: 22,
+          ease: "easeInOut",
+          repeat: Infinity,
         }}
       />
-      <div
+
+      {/* Soft floating orbs for extra depth/motion */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 right-[10%] h-72 w-72 rounded-full blur-3xl"
+        style={{ background: "rgba(255,111,97,0.18)" }}
+        animate={{
+          x: [0, 30, -10, 0],
+          y: [0, 20, -15, 0],
+          scale: [1, 1.08, 0.96, 1],
+        }}
+        transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[-6rem] left-[8%] h-80 w-80 rounded-full blur-3xl"
+        style={{ background: "rgba(61,31,82,0.35)" }}
+        animate={{
+          x: [0, -25, 15, 0],
+          y: [0, -15, 20, 0],
+          scale: [1, 1.06, 0.98, 1],
+        }}
+        transition={{ duration: 20, ease: "easeInOut", repeat: Infinity, delay: 1 }}
+      />
+
+      {/* Moving grid */}
+      <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.07]"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
           backgroundSize: "56px 56px",
+        }}
+        animate={{
+          backgroundPosition: ["0px 0px", "56px 56px"],
+        }}
+        transition={{
+          duration: 14,
+          ease: "linear",
+          repeat: Infinity,
         }}
       />
 
@@ -140,10 +188,33 @@ export function Hero() {
                 </p>
                 <div className="mt-3 flex items-end gap-1.5">
                   {[40, 55, 48, 70, 62, 80, 74, 90, 85, 96].map((h, i) => (
-                    <div
+                    <motion.div
                       key={i}
                       className="w-full rounded-sm bg-accent/70"
-                      style={{ height: `${h * 0.4}px` }}
+                      initial={{ height: 0, opacity: 0.4 }}
+                      animate={{
+                        height: [
+                          `${h * 0.4}px`,
+                          `${h * 0.4 * 1.15}px`,
+                          `${h * 0.4 * 0.9}px`,
+                          `${h * 0.4}px`,
+                        ],
+                        opacity: [0.6, 1, 0.75, 0.9],
+                      }}
+                      transition={{
+                        height: {
+                          duration: 3.2,
+                          ease: "easeInOut",
+                          repeat: Infinity,
+                          delay: i * 0.12,
+                        },
+                        opacity: {
+                          duration: 3.2,
+                          ease: "easeInOut",
+                          repeat: Infinity,
+                          delay: i * 0.12,
+                        },
+                      }}
                     />
                   ))}
                 </div>
