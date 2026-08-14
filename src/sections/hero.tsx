@@ -88,11 +88,9 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Scrim so headline text stays legible — anchored to the left
-            where the text sits, much lighter elsewhere so the photo
-            actually shows through instead of being hidden under it */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/75 via-primary/35 to-primary/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-transparent" />
+        {/* Dark overlay so text stays legible over any photo */}
+        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
       </div>
 
       {/* Faint static grid, sits above the photo/overlay */}
