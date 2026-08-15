@@ -36,13 +36,22 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm">
               <li>support@hurkify.com</li>
-              <li>Lagos, Nigeria</li>
+              <li>
+                6, Asabi Cole Street, Off ShopRite Bustop, Alausa, Ikeja
+                <br />
+                <span className="text-white/50">
+                  (Closest landmark: Passport Office)
+                </span>
+              </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>&copy; {new Date().getFullYear()} Hurkify Technology Limited. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Hurkify Technology Limited. All
+            rights reserved.
+          </p>
           <p>Registered in Nigeria</p>
         </div>
       </div>
