@@ -10,5 +10,6 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Healthcare Support", href: "#healthcare-support" },
   { label: "Industries", href: "#industries" },
   { label: "Projects", href: "#projects" },
+  { label: "Team", href: "#team" },
   { label: "Contact", href: "#contact" },
 ];

@@ -5,6 +5,8 @@ import { HealthcareSupport } from "@/sections/healthcare-support";
 import { Industries } from "@/sections/industries";
 import { Projects } from "@/sections/projects";
 import { Testimonials } from "@/sections/testimonials";
+import { Biography } from "@/sections/biography";
+import { Team } from "@/sections/team";
 import { Contact } from "@/sections/contact";
 
 export default function Home() {
@@ -17,6 +19,8 @@ export default function Home() {
       <Industries />
       <Projects />
       <Testimonials />
+      <Biography />
+      <Team />
       <Contact />
     </>
   );
