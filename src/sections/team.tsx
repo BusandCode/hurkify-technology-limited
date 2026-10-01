@@ -18,7 +18,7 @@ const TEAM: TeamMember[] = [
     image: "/hurkify-founder.jpeg",
   },
   {
-    name: "Busand",
+    name: " Andrew Adetokunbo",
     role: "Full Stack Developer",
     bio: "Builds web and mobile products end to end, from the interface to the APIs and data behind it.",
     image: "/busandcode.jpeg",
