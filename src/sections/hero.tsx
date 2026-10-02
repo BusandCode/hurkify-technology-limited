@@ -85,8 +85,8 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute inset-0 bg-primary/35 lg:bg-gradient-to-r lg:from-primary/80 lg:via-primary/40 lg:to-primary/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-primary/61 lg:bg-linear-to-r lg:from-primary/88 lg:via-primary/63 lg:to-primary/30" />
+        <div className="absolute inset-0 bg-linear-to-t from-primary/65 via-transparent to-transparent" />
       </div>
 
       <div
@@ -105,17 +105,17 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-[11px] font-medium tracking-wide text-white/70 sm:text-xs">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-[11px] font-medium tracking-wide text-white sm:text-xs">
             IT Consulting &amp; Healthcare Technology
           </span>
 
-          <h1 className="mt-5 text-3xl font-extrabold leading-[1.15] tracking-tight text-white sm:mt-6 sm:text-5xl sm:leading-[1.08] lg:text-6xl">
+          <h1 className="mt-5 text-3xl font-extrabold leading-[1.15] tracking-tight text-white [text-shadow:0_2px_16px_rgba(0,0,0,0.35)] sm:mt-6 sm:text-5xl sm:leading-[1.08] lg:text-6xl">
             Systems that hold up when
-            <span className="text-white/90"> healthcare and compliance</span>{" "}
+            <span className="text-white"> healthcare and compliance</span>{" "}
             can&rsquo;t afford to fail.
           </h1>
 
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/75 sm:mt-6 sm:text-base lg:text-lg">
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white [text-shadow:0_1px_10px_rgba(0,0,0,0.3)] sm:mt-6 sm:text-base lg:text-lg">
             Hurkify builds and supports the software backbone for Nigerian
             businesses and healthcare providers — from HEFAMAA registration
             and EMR systems to cloud infrastructure and custom software.
@@ -150,7 +150,7 @@ export function Hero() {
             {TRUST_BADGES.map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="flex shrink-0 items-center justify-center text-center gap-2.5 rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm"
+                className="flex shrink-0 items-center justify-center text-center gap-2.5 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm"
               >
                 <Icon size={15} className="shrink-0 text-white" />
                 <span className="whitespace-nowrap text-xs font-semibold text-white text-center">

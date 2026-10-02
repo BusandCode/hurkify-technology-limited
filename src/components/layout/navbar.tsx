@@ -22,12 +22,15 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 bg-primary transition-shadow duration-300",
-        scrolled && "shadow-[0_1px_0_0_rgba(255,255,255,0.08)]"
+        "fixed inset-x-0 top-0 z-50 bg-accent transition-shadow duration-300",
+        scrolled && "shadow-[0_1px_0_0_rgba(0,0,0,0.12)]"
       )}
     >
       <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <a href="#home" className="flex items-center">
+        <a
+          href="#home"
+          className="flex items-center transition-transform duration-200 hover:scale-105"
+        >
           <Image
             src="/hurkify.png"
             alt="Hurkify Technology Limited"
@@ -38,12 +41,12 @@ export function Navbar() {
           />
         </a>
 
-        <ul className="hidden items-center gap-8 lg:flex">
+        <ul className="hidden items-center gap-2 lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-sm font-medium text-white/75 transition-colors hover:text-white"
+                className="rounded-full px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-black hover:text-white"
               >
                 {link.label}
               </a>
@@ -53,7 +56,10 @@ export function Navbar() {
 
         <a
           href="#contact"
-          className={cn(buttonVariants({ size: "sm" }), "hidden lg:inline-flex")}
+          className={cn(
+            buttonVariants({ size: "sm" }),
+            "hidden bg-black text-white transition-colors duration-200 hover:bg-white hover:text-black lg:inline-flex"
+          )}
         >
           Talk to us
         </a>
@@ -61,7 +67,7 @@ export function Navbar() {
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="text-white lg:hidden"
+          className="rounded-md p-1.5 text-white transition-colors duration-200 hover:bg-black lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={24} /> : <Menu size={24} />}
@@ -75,7 +81,7 @@ export function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden bg-primary lg:hidden"
+            className="overflow-hidden bg-accent lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 pb-6">
               {NAV_LINKS.map((link) => (
@@ -83,7 +89,7 @@ export function Navbar() {
                   <a
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block py-3 text-base font-medium text-white/85"
+                    className="block rounded-lg px-3 py-3 text-base font-medium text-white transition-colors duration-200 hover:bg-black"
                   >
                     {link.label}
                   </a>
@@ -93,7 +99,10 @@ export function Navbar() {
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className={cn(buttonVariants({ size: "default" }), "w-full")}
+                  className={cn(
+                    buttonVariants({ size: "default" }),
+                    "w-full bg-black text-white transition-colors duration-200 hover:bg-white hover:text-black"
+                  )}
                 >
                   Talk to us
                 </a>
