@@ -14,16 +14,13 @@ const TRUST_BADGES = [
   { icon: Cpu, label: "Enterprise IT delivery" },
 ];
 
-// PLACEHOLDER SLOTS — drop real photos into /public/hero/ with these
-// exact filenames. Per brief: Black Nigerian professionals, Lagos
-// corporate aesthetic, modern African tech environment. No stock photo
-// substitute is wired in here since it can't be verified against that
-// requirement — see the note in the chat reply for details.
 const SLIDES = [
   { src: "/hero/slide-1.png", alt: "Hurkify team at work in a Lagos office" },
   { src: "/hero/slide-2.png", alt: "Hurkify engineers reviewing a system" },
   { src: "/hero/slide-3.png", alt: "Hurkify team in a client meeting" },
 ];
+
+const UPTIME_BARS = [40, 55, 48, 70, 62, 80, 74, 90, 85, 96];
 
 const SWIPE_THRESHOLD = 60;
 
@@ -48,7 +45,6 @@ export function Hero() {
     }
   }
 
-  // Auto-advance the background slide every 5s.
   useEffect(() => {
     const timer = setInterval(() => {
       setDirection(1);
@@ -62,11 +58,6 @@ export function Hero() {
       id="home"
       className="relative flex min-h-[100svh] scroll-mt-20 items-center bg-primary pb-16 pt-24 sm:pb-20 sm:pt-28 lg:min-h-screen"
     >
-      {/* Swipeable background image carousel — overflow-hidden lives HERE,
-          scoped to just this layer, so it clips the drag/slide animation
-          without ever clipping (and scroll-locking) the text content below
-          on mobile. Putting overflow-hidden on the section itself is what
-          was cutting content off and killing scroll on phones. */}
       <div className="absolute inset-0 overflow-hidden">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
@@ -75,9 +66,6 @@ export function Hero() {
             drag="x"
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
-            // Lets the browser take over the gesture the moment it reads as
-            // vertical, so mobile scrolling never gets stuck behind the
-            // horizontal swipe carousel.
             dragDirectionLock
             onDragEnd={handleDragEnd}
             initial={{ opacity: 0 }}
@@ -97,14 +85,10 @@ export function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Overlay: solid on mobile/tablet (text spans full width, stacked
-            layout), fading gradient only once the two-column layout kicks
-            in at lg, where the mockup can safely sit over a lighter area */}
-        <div className="absolute inset-0 bg-primary/80 lg:bg-gradient-to-r lg:from-primary lg:via-primary/85 lg:to-primary/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-primary/35 lg:bg-gradient-to-r lg:from-primary/80 lg:via-primary/40 lg:to-primary/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent" />
       </div>
 
-      {/* Faint static grid, sits above the photo/overlay */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
@@ -131,7 +115,7 @@ export function Hero() {
             can&rsquo;t afford to fail.
           </h1>
 
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/65 sm:mt-6 sm:text-base lg:text-lg">
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/75 sm:mt-6 sm:text-base lg:text-lg">
             Hurkify builds and supports the software backbone for Nigerian
             businesses and healthcare providers — from HEFAMAA registration
             and EMR systems to cloud infrastructure and custom software.
@@ -177,7 +161,6 @@ export function Hero() {
           </div>
         </motion.div>
 
-        {/* Dashboard mockup */}
         <motion.div
           initial={{ opacity: 0, y: 32, scale: 0.98 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -215,7 +198,7 @@ export function Hero() {
                   Facilities
                 </p>
                 <p className="mt-2 text-xl font-bold text-secondary sm:text-2xl">
-                  12
+                  500
                 </p>
                 <p className="mt-1 text-[10px] text-emerald-600 sm:text-[11px]">
                   +2 this quarter
@@ -227,19 +210,29 @@ export function Hero() {
                   EMR Uptime
                 </p>
                 <div className="mt-3 flex items-end gap-1 sm:gap-1.5">
-                  {[40, 55, 48, 70, 62, 80, 74, 90, 85, 96].map((h, i) => (
+                  {UPTIME_BARS.map((h, i) => (
                     <div
                       key={i}
-                      className="w-full rounded-sm bg-primary/30"
+                      className="relative w-full overflow-hidden rounded-sm bg-primary/15"
                       style={{ height: `${h * 0.32}px` }}
-                    />
+                    >
+                      <motion.div
+                        className="absolute inset-0 origin-bottom bg-primary"
+                        initial={{ scaleY: 0 }}
+                        animate={{ scaleY: 1 }}
+                        transition={{
+                          duration: 0.9,
+                          ease: "easeOut",
+                          delay: 0.6 + i * 0.1,
+                        }}
+                      />
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
 
-          {/* floating badge — desktop only, no room for it on mobile */}
           <div className="absolute -bottom-5 -left-5 hidden items-center gap-2 rounded-xl border border-white/10 bg-secondary/90 px-4 py-3 shadow-lg backdrop-blur sm:flex">
             <ShieldCheck size={18} className="text-white/70" />
             <span className="text-xs font-semibold text-white">
