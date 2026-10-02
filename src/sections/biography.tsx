@@ -30,9 +30,9 @@ export function Biography() {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="relative mx-auto w-full max-w-sm"
           >
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border border-mist-200 bg-mist-100 shadow-xl shadow-secondary/10">
+            <div className="relative aspect-4/5 overflow-hidden rounded-3xl border border-mist-200 bg-mist-100 shadow-xl shadow-secondary/10">
               <Image
-                src="/hurkify-founder.jpeg"
+                src="/hurkify-founder.png"
                 alt="Olamide Sobowale, founder of Hurkify Technology Limited"
                 fill
                 priority

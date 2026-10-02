@@ -15,7 +15,7 @@ const TEAM: TeamMember[] = [
     name: "Olamide Sobowale",
     role: "Founder & CEO",
     bio: "Software engineer focused on practical digital solutions for businesses and healthcare providers.",
-    image: "/hurkify-founder.jpeg",
+    image: "/hurkify-founder.png",
   },
   {
     name: " Andrew Adetokunbo",
@@ -52,7 +52,7 @@ export function Team() {
               transition={{ duration: 0.45, ease: "easeOut", delay: i * 0.06 }}
               className="group overflow-hidden rounded-2xl border border-mist-200 bg-mist-50"
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-mist-100 to-mist-200">
+              <div className="relative aspect-4/5 overflow-hidden bg-linear-to-b from-mist-100 to-mist-200">
                 <Image
                   src={image}
                   alt={`${name}, ${role}`}

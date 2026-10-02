@@ -1,4 +1,5 @@
 import { NAV_LINKS } from "@/lib/nav-links";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -6,9 +7,15 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 py-14 lg:px-10">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-xs">
-            <span className="font-display text-lg font-extrabold text-white">
+            <Image
+              src="/hurkify.png"
+              alt="Hurkify Logo"
+              width={100}
+              height={100}
+            />
+            {/* <span className="font-display text-lg font-extrabold text-white">
               Hurkify
-            </span>
+            </span> */}
             <p className="mt-3 text-sm leading-relaxed">
               IT consulting and healthcare technology support for businesses
               across Nigeria.
