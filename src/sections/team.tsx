@@ -15,7 +15,7 @@ const TEAM: TeamMember[] = [
     name: "Olamide Sobowale",
     role: "Founder & CEO",
     bio: "Software engineer focused on practical digital solutions for businesses and healthcare providers.",
-    image: "/hurkify-founder.png",
+    image: "/hurkify-founder.PNG",
   },
   {
     name: " Andrew Adetokunbo",

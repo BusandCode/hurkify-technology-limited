@@ -32,7 +32,7 @@ export function Biography() {
           >
             <div className="relative aspect-4/5 overflow-hidden rounded-3xl border border-mist-200 bg-mist-100 shadow-xl shadow-secondary/10">
               <Image
-                src="/hurkify-founder.png"
+                src="/hurkify-founder.PNG"
                 alt="Olamide Sobowale, founder of Hurkify Technology Limited"
                 fill
                 priority

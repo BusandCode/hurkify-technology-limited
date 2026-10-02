@@ -62,7 +62,7 @@ export function About() {
 
             {/* Transparent cutout founder composition — no boxed background */}
             <Image
-              src="/hurkify-founder.png"
+              src="/hurkify-founder.PNG"
               alt="Hurkify founder, a Black Nigerian tech professional, in a modern Lagos office"
               width={800}
               height={960}
