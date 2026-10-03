@@ -61,15 +61,24 @@ export function Contact() {
     resolver: zodResolver(contactFormSchema),
   });
 
-  async function onSubmit(values: ContactFormValues) {
-    setStatus({ type: "idle" });
-    const result = await submitContactForm(values);
-    setStatus({
-      type: result.success ? "success" : "error",
-      message: result.message,
+async function onSubmit(values: ContactFormValues) {
+  setStatus({ type: "idle" });
+  try {
+    const response = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(values),
     });
-    if (result.success) reset();
+    if (response.ok) {
+      setStatus({ type: "success", message: "Thanks — we'll be in touch." });
+      reset();
+    } else {
+      throw new Error("Failed");
+    }
+  } catch (err) {
+    setStatus({ type: "error", message: "Something went wrong. Please try again." });
   }
+}
 
   return (
     <section

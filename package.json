@@ -1,13 +1,12 @@
 {
   "name": "hurkify",
   "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
+  "private": true,"scripts": {
+  "dev": "next dev",
+  "build": "next build --webpack",
+  "start": "next start",
+  "lint": "eslint"
+},
   "dependencies": {
     "@hookform/resolvers": "^5.7.1",
     "@radix-ui/react-slot": "^1.3.3",
