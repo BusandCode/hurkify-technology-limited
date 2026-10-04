@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://hurkify.com/sitemap.xml",
+   sitemap: "https://hurkifytechologylimited.com/sitemap.xml",
   };
 }
