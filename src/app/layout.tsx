@@ -27,6 +27,11 @@ export const metadata: Metadata = {
     "IT consulting Lagos",
     "EMR systems Nigeria",
   ],
+  icons: {
+    icon: [{ url: "/hurkify-logo.jpeg?v=1", type: "image/png" }],
+    shortcut: "/hurkify-logo.jpeg?v=1",
+    apple: "/hurkify-logo.jpeg?v=1",
+  },
   openGraph: {
     title: "Hurkify Technology Limited",
     description:
