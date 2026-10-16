@@ -1,116 +1,113 @@
 "use client";
-
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { NAV_LINKS } from "@/lib/nav-links";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-
+  const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
+    function dismiss(event: KeyboardEvent) {
+      if (event.key === "Escape" && open) {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+    }
+    window.addEventListener("keydown", dismiss);
+    return () => window.removeEventListener("keydown", dismiss);
+  }, [open]);
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 bg-accent transition-shadow duration-300",
-        scrolled && "shadow-[0_1px_0_0_rgba(0,0,0,0.12)]"
-      )}
-    >
-      <nav className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6 lg:px-10">
-        <a
-          href="#home"
-          className="flex items-center transition-transform duration-200 hover:scale-105"
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-mist-200 bg-white/95 backdrop-blur-lg">
+      <nav
+        aria-label="Main navigation"
+        className="mx-auto flex h-20 max-w-7xl items-center justify-between gap-6 px-6 lg:px-10"
+      >
+        <Link
+          href="/#home"
+          onClick={() => setOpen(false)}
+          className="flex shrink-0 items-center gap-0.5"
+          aria-label="Hurkify Technology Limited home"
         >
-          <Image
-            src="/hurkify.png"
-            alt="Hurkify Technology Limited"
-            width={44}
-            height={44}
-            priority
-            className="h-15 w-15 object-cover sm:h-15 sm:w-15"
-          />
-        </a>
-
-        <ul className="hidden items-center gap-2 lg:flex">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden">
+            <Image
+              src="/hurkify-icon.png"
+              alt=""
+              width={36}
+              height={36}
+              preload
+              className="h-9 w-9 scale-[1.4] object-contain"
+            />
+          </span>
+          <span
+            aria-hidden="true"
+            className="font-display text-lg font-extrabold leading-none tracking-[-0.035em] text-primary"
+          >
+            urkify
+            <span className="mt-1 block text-[7px] font-semibold uppercase leading-none tracking-[0.08em] text-primary/75">
+              Technology Limited
+            </span>
+          </span>
+        </Link>
+        <ul className="hidden items-center gap-6 lg:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-white transition-colors duration-200 hover:bg-black hover:text-white"
+              <Link
+                href={`/${link.href}`}
+                className="nav-link text-sm font-medium text-mist-600"
               >
                 {link.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
-
-        <a
-          href="#contact"
-          className={cn(
-            buttonVariants({ size: "sm" }),
-            "hidden bg-black text-white transition-colors duration-200 hover:bg-white hover:text-black lg:inline-flex"
-          )}
+        <Link
+          href="/#contact"
+          className="nav-cta hidden items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-white hover:bg-secondary lg:inline-flex"
         >
-          Talk to us
-        </a>
-
+          Let&apos;s talk <ArrowUpRight size={16} />
+        </Link>
         <button
+          ref={toggle}
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
-          className="rounded-md p-1.5 text-white transition-colors duration-200 hover:bg-black lg:hidden"
-          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen(!open)}
+          className="rounded-lg p-2 text-secondary lg:hidden"
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? <X /> : <Menu />}
         </button>
       </nav>
-
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25, ease: "easeInOut" }}
-            className="overflow-hidden bg-accent lg:hidden"
-          >
-            <ul className="flex flex-col gap-1 px-6 pb-6">
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-3 text-base font-medium text-white transition-colors duration-200 hover:bg-black"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-              <li className="pt-2">
-                <a
-                  href="#contact"
-                  onClick={() => setOpen(false)}
-                  className={cn(
-                    buttonVariants({ size: "default" }),
-                    "w-full bg-black text-white transition-colors duration-200 hover:bg-white hover:text-black"
-                  )}
-                >
-                  Talk to us
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        id="mobile-navigation"
+        hidden={!open}
+        className="border-t border-mist-200 bg-white lg:hidden"
+      >
+        <ul className="mx-auto max-w-7xl space-y-1 px-6 py-5">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <Link
+                href={`/${link.href}`}
+                onClick={() => setOpen(false)}
+                className="nav-mobile-link block rounded-lg px-3 py-3 text-sm font-medium text-secondary hover:bg-mist-50"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+          <li>
+            <Link
+              href="/#contact"
+              onClick={() => setOpen(false)}
+              className="mt-2 block rounded-lg bg-primary px-3 py-3 text-center text-sm font-semibold text-white"
+            >
+              Discuss your project
+            </Link>
+          </li>
+        </ul>
+      </div>
     </header>
   );
 }

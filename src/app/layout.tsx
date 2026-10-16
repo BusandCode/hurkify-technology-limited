@@ -3,6 +3,7 @@ import { Manrope, Inter } from "next/font/google";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import "./globals.css";
+import { SITE_URL } from "@/lib/site";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -17,6 +18,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Hurkify Technology Limited | IT Consulting & Healthcare Technology",
   description:
     "Hurkify Technology Limited delivers IT consulting, software development, and healthcare compliance support — including HEFAMAA registration and EMR systems — for businesses across Nigeria.",
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
     "EMR systems Nigeria",
   ],
   icons: {
-    icon: [{ url: "/hurkify-logo.jpeg?v=1", type: "image/png" }],
+    icon: [{ url: "/hurkify-logo.jpeg?v=1", type: "image/jpeg" }],
     shortcut: "/hurkify-logo.jpeg?v=1",
     apple: "/hurkify-logo.jpeg?v=1",
   },
@@ -45,15 +47,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      suppressHydrationWarning
       className={`${manrope.variable} ${inter.variable} h-full antialiased`}
     >
-      <body
-        suppressHydrationWarning
-        className="min-h-full flex flex-col bg-background text-foreground"
-      >
+      <body className="min-h-full flex flex-col bg-background text-foreground">
+        <a
+          href="#main-content"
+          className="sr-only fixed left-4 top-4 z-[100] rounded-lg bg-white px-5 py-3 text-primary shadow-lg focus:not-sr-only"
+        >
+          Skip to content
+        </a>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

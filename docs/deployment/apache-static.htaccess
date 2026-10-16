@@ -1,0 +1,22 @@
+# REVIEW BEFORE INSTALLING. This template is not copied to public/ or out/.
+# Merge with existing cPanel rules and confirm the real TLS proxy behaviour.
+Options -Indexes
+DirectoryIndex index.html
+ErrorDocument 404 /404.html
+RewriteEngine On
+
+# Canonical hostname. The destination is fixed, never taken from user input.
+RewriteCond %{HTTP_HOST} ^www\.hurkifytechologylimited\.com$ [NC]
+RewriteRule ^ https://hurkifytechologylimited.com%{REQUEST_URI} [R=301,L]
+
+# Only enable when Apache terminates TLS directly; for a proxy ask Truehost
+# for its trusted HTTPS-detection rule to avoid loops/spoofed headers.
+# RewriteCond %{HTTPS} !=on
+# RewriteCond %{HTTP_HOST} ^hurkifytechologylimited\.com$ [NC]
+# RewriteRule ^ https://hurkifytechologylimited.com%{REQUEST_URI} [R=301,L]
+
+# Preserve the old privacy URL while serving the directory-index export.
+RewriteRule ^privacy$ /privacy/ [R=301,L]
+RewriteRule ^hefamaa-registration-lagos$ /hefamaa-registration-lagos/ [R=301,L]
+
+# No SPA catch-all: missing routes must return a real 404, not the homepage.

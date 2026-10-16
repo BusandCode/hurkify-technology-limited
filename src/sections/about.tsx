@@ -1,116 +1,127 @@
-"use client";
-
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { ShieldCheck, Users, Building2, Sparkles } from "lucide-react";
+﻿import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+import { CountUp } from "@/components/count-up";
 
 const STATS = [
-  { icon: Building2, value: "500+", label: "Facilities supported" },
-  { icon: Users, value: "700+", label: "Clients served" },
-  { icon: ShieldCheck, value: "100%", label: "Renewal success rate" },
+  { value: 500, suffix: "+", label: "Facilities supported" },
+  { value: 700, suffix: "+", label: "Clients served" },
+  { value: 100, suffix: "%", label: "Renewal success rate" },
+];
+const PRINCIPLES = [
+  {
+    title: "Understand the business",
+    text: "We start with your people, priorities, and everyday operations to understand where technology can make a difference.",
+  },
+  {
+    title: "Build with purpose",
+    text: "From software and websites to healthcare systems and automation, we create solutions around the work you need to do.",
+  },
+  {
+    title: "Keep it practical",
+    text: "Clear advice, useful tools, and thoughtful support help your team move forward with confidence.",
+  },
 ];
 
 export function About() {
   return (
-    <section id="about" className="scroll-mt-20 bg-white py-24 sm:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-0">
-        <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div className="relative mx-auto w-full max-w-sm">
-            <div
-              aria-hidden
-              className="absolute -bottom-6 -right-6 -z-10 h-32 w-32 opacity-40"
-              style={{
-                backgroundImage:
-                  "radial-gradient(rgba(61,31,82,0.4) 1.5px, transparent 1.5px)",
-                backgroundSize: "12px 12px",
-              }}
-            />
-
-            <div className="relative">
+    <section id="about" className="scroll-mt-24 bg-white py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+        <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+          <figure className="mx-auto w-full max-w-md lg:mx-0">
+            <div className="relative isolate overflow-hidden rounded-t-[140px] bg-mist-100 px-6 pt-8 sm:px-10">
               <div
                 aria-hidden
-                className="absolute inset-x-4 bottom-0 top-12 -z-10 rounded-t-[999px] border border-b-0 border-primary/10 bg-linear-to-b from-primary/9 via-primary/4 to-transparent"
+                className="absolute inset-x-6 bottom-0 top-6 -z-10 rounded-t-[120px] border border-primary/15 sm:inset-x-8 sm:top-8"
               />
-              <div
-                aria-hidden
-                className="absolute inset-x-10 bottom-0 top-24 -z-10 rounded-t-[999px] border border-b-0 border-primary/[0.07]"
-              />
-
               <Image
-                src="/hurkify-founder.PNG"
-                alt="Hurkify founder, a Black Nigerian tech professional, in a modern Lagos office"
+                src="/hurkify-founder.webp"
+                alt="Olamide Sobowale, founder of Hurkify Technology Limited"
                 width={800}
                 height={960}
-                className="relative w-full object-contain"
+                sizes="(max-width: 768px) 85vw, 400px"
+                className="relative mx-auto max-h-[420px] w-auto object-contain object-bottom"
               />
             </div>
-
-            <div className="mt-4 text-center">
-              <p className="font-display text-sm font-bold text-secondary">
-                Founder &amp; CEO
-              </p>
-              <p className="text-xs text-mist-600">Hurkify Technology Limited</p>
-            </div>
-
-            <div className="mt-8 grid grid-cols-3 gap-3 border-t border-mist-200 pt-6">
-              {STATS.map(({ icon: Icon, value, label }) => (
-                <div key={label} className="text-center">
-                  <Icon size={16} className="mx-auto text-primary" />
-                  <p className="mt-2 font-display text-lg font-extrabold text-secondary">
-                    {value}
-                  </p>
-                  <p className="mt-0.5 text-[10.5px] leading-tight text-mist-600">
-                    {label}
-                  </p>
+            <figcaption className="border-b border-mist-200 py-5 text-center text-primary">
+              <div>
+                <p className="font-display text-base font-bold">
+                  Olamide Sobowale
+                </p>
+                <p className="mt-1 text-xs">Founder &amp; CEO</p>
+              </div>
+            </figcaption>
+            <p className="mt-5 max-w-sm text-sm leading-relaxed text-mist-600">
+              Personal commitment. Practical expertise. A clear focus on the
+              businesses we serve.
+            </p>
+          </figure>
+          <div>
+            <p className="eyebrow">About Hurkify</p>
+            <h2 className="section-title max-w-xl">
+              Technology with purpose.
+              <br />
+              People at its heart.
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-secondary">
+              We help businesses turn everyday challenges into better ways of
+              working.
+            </p>
+            <p className="mt-4 max-w-xl text-sm leading-relaxed text-mist-600">
+              Hurkify Technology Limited is a Nigerian technology company
+              bringing together software development, IT consulting, healthcare
+              technology, and digital transformation. We connect business
+              understanding with technical expertise to build solutions that fit
+              your goals, operations, and budget.
+            </p>
+            <dl className="mt-8 divide-y divide-mist-200 border-y border-mist-200">
+              {PRINCIPLES.map(({ title, text }) => (
+                <div
+                  key={title}
+                  className="grid gap-2 py-5 sm:grid-cols-[160px_1fr] sm:gap-6"
+                >
+                  <dt className="font-display text-sm font-bold text-secondary">
+                    {title}
+                  </dt>
+                  <dd className="text-sm leading-relaxed text-mist-600">
+                    {text}
+                  </dd>
                 </div>
               ))}
-            </div>
+            </dl>
+            <Link
+              href="/#contact"
+              className="mt-7 inline-flex min-h-11 items-center gap-3 border-b border-primary/30 pb-1 text-sm font-semibold text-primary transition-colors hover:border-primary hover:text-secondary"
+            >
+              Let&apos;s talk about your business{" "}
+              <ArrowUpRight size={17} aria-hidden />
+            </Link>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          >
-            {/* <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-              About
-            </span> */}
-            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-accent sm:text-4xl">
-              About Hurkify Technology Limited
-            </h2>
-
-            <div className="mt-6 max-w-2xl space-y-4 text-[15px] leading-relaxed text-mist-600">
-              <p>
-                Hurkify Technology Limited is a Nigerian technology company
-                helping businesses and organizations use technology to work
-                smarter, faster, and more efficiently.
-              </p>
-              <p>
-                We provide practical digital solutions, including IT
-                consulting, software development, website development,
-                healthcare technology, business automation, cloud solutions,
-                and digital transformation.
-              </p>
-              <p>
-                At Hurkify, we believe technology should make work easier, not
-                more complicated. We take the time to understand each
-                client&rsquo;s needs and build solutions that fit their goals,
-                operations, and budget.
-              </p>
-              <p>
-                Our focus is simple: solve real problems, build useful
-                technology, and help businesses grow.
-              </p>
-            </div>
-
-            <div className="mt-8">
-              <p className="inline-flex items-center gap-2.5 rounded-full border border-primary/15 bg-primary/5 px-5 py-2.5 font-display text-sm font-bold text-secondary">
-                {/* <Sparkles size={15} className="shrink-0 text-accent" /> */}
-                Hurkify Technology Limited — Technology that works for you.
-              </p>
-            </div>
-          </motion.div>
+        </div>
+        <div className="mt-14 grid gap-8 border-t border-mist-200 pt-8 sm:grid-cols-[1.15fr_2fr] sm:gap-12 lg:mt-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
+              Our work in numbers
+            </p>
+            <p className="mt-3 max-w-xs text-sm leading-relaxed text-mist-600">
+              Supporting the people and organizations behind better business.
+            </p>
+          </div>
+          <dl className="grid grid-cols-3 gap-3 sm:gap-6">
+            {STATS.map(({ value, suffix, label }) => (
+              <div
+                key={label}
+                className="border-l border-mist-200 pl-3 sm:pl-6"
+              >
+                <dt className="text-xs leading-relaxed text-mist-600">
+                  {label}
+                </dt>
+                <dd className="mt-2 font-display text-3xl font-semibold tracking-tight text-secondary sm:text-4xl">
+                  <CountUp value={value} suffix={suffix} />
+                </dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </div>
     </section>

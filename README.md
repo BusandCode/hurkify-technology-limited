@@ -1,51 +1,44 @@
-# Hurkify Technology Limited — Website
+# Hurkify Technology Limited
 
-Phase 1 scaffold: Next.js App Router + TypeScript + Tailwind v4, with brand
-tokens, folder structure, and a working nav/footer shell wired to anchor
-placeholders for every section in the spec.
+Company website built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4.
 
-## Stack installed
-Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4,
-lucide-react, framer-motion, react-hook-form + zod + @hookform/resolvers,
-@supabase/supabase-js, resend, class-variance-authority, clsx, tailwind-merge.
+## Local development
 
-`shadcn/ui` is configured via `components.json` (style: new-york, base:
-neutral) so `npx shadcn@latest add <component>` works directly — the CLI's
-interactive init hangs in a non-TTY sandbox, so `components.json` and the
-first component (`Button`) were added by hand in the same shape the CLI
-produces.
-
-## Structure
-```
-src/
-  app/            # layout.tsx (fonts, metadata, Navbar/Footer), page.tsx (section anchors)
-  components/
-    ui/           # shadcn-style primitives (Button so far)
-    layout/       # Navbar, Footer, SectionPlaceholder
-  sections/       # empty — real section builds start Phase 2
-  lib/            # utils.ts (cn), nav-links.ts
-  hooks/          # empty — added as needed
-  types/          # shared TS types
-  sanity/         # client stub, wired Phase 6
-  supabase/       # client stub, wired Phase 6
-```
-
-## Brand tokens (globals.css)
-- `--color-primary`  #3D1F52
-- `--color-secondary` #1A0B2E
-- `--color-accent`   #FF6F61
-- Neutral "mist" scale tinted from the primary hue instead of generic gray
-- Display font: Manrope · Body font: Inter
-
-## Run it
-```bash
-npm install
-cp .env.local.example .env.local   # fill in when Phase 6 lands
+```sh
+npm ci
+# Copy .env.example to .env.local and configure the public Formspree endpoint.
 npm run dev
 ```
 
-## Note on this build
-`npm run build` will fail in network-restricted sandboxes because Next.js
-fetches Manrope/Inter from Google Fonts at build time. It builds cleanly
-anywhere with normal internet access (local machine, Vercel). `tsc --noEmit`
-passes clean, confirming the code itself is sound.
+Open http://localhost:3000. On Windows PowerShell with script execution disabled, use `npm.cmd` instead of `npm`.
+
+## Verification and deployment
+
+```sh
+npm run lint
+npm run test
+npm run build:static
+npm run check:seo
+```
+
+Static deployment remains the default for existing cPanel compatibility; files are generated in `out/`. `npm run build:node` prepares a Next.js server build when the hosting runtime is verified. The build needs internet access for Google Fonts. The shared managed-form integration works with either deployment target.
+
+## Enquiries
+
+The general contact and HEFAMAA consultation forms submit to a business-owned Formspree endpoint. Set `NEXT_PUBLIC_FORMSPREE_GENERAL_ENDPOINT` before building; optionally set `NEXT_PUBLIC_FORMSPREE_HEFAMAA_ENDPOINT` to a separate endpoint. Configure and verify notifications to `hurkifytechnology@gmail.com` in Formspree. The endpoint is public; no secret keys are needed in frontend code.
+
+Without a configured endpoint, send is disabled and direct email/WhatsApp options remain available. Success requires provider acknowledgement. The supplied endpoint is configured locally, and the owner confirmed receipt of both controlled general and HEFAMAA test notifications. See [verification results](docs/VERIFICATION.md) for remaining checks; mocked tests are recorded separately from live delivery.
+
+See [the implementation handover](docs/IMPLEMENTATION-HANDOVER.md) for the audit, architecture, owner privacy review, provider configuration, hosting assessment, deployment steps, rollback, and Search Console checklist. No production deployment is performed automatically.
+
+## Content and assets
+
+- Homepage sections live in `src/sections/`; navigation lives in `src/lib/nav-links.ts`.
+- The company confirmed its published figures, project claims, and testimonials during the website review. These remain on the homepage.
+- Project scope disclosures replace non-functional project links. The first three cards use graphic title panels; Hurkfin uses its supplied image.
+- Optimised WebP portraits and the Hurkfin image are served on the homepage. Original images remain in `public/`.
+- The dedicated healthcare page is `/hefamaa-registration-lagos/`; the privacy notice is `/privacy/`.
+- The owner confirmed the canonical domain is `https://hurkifytechologylimited.com/`. Preserve the `techology` spelling.
+- Confirm the founder's preferred public name before reusing promotional artwork: the supplied banner and biography use different names.
+
+Sanity and Supabase scaffolding is present but is not used by the current homepage enquiry flow.

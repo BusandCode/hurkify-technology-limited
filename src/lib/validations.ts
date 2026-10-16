@@ -17,4 +17,6 @@ export const SERVICE_OPTIONS = [
   "EMR & Health-Tech Solutions",
   "Website Development",
   "Cloud & Technical Support",
+  "Branding & Interface Design",
+  "Not sure yet — let's discuss",
 ] as const;

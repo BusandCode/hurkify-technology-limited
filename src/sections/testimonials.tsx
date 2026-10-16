@@ -32,7 +32,7 @@ export function Testimonials() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <div className="max-w-2xl">
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-primary">
             Client feedback
           </span>
           <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-secondary sm:text-4xl">
