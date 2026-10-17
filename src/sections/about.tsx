@@ -116,7 +116,7 @@ export function About() {
                 <dt className="text-xs leading-relaxed text-mist-600">
                   {label}
                 </dt>
-                <dd className="mt-2 font-display text-3xl font-semibold tracking-tight text-secondary sm:text-4xl">
+                <dd className="mt-2 font-display text-3xl font-semibold tracking-tight text-primary sm:text-4xl">
                   <CountUp value={value} suffix={suffix} />
                 </dd>
               </div>

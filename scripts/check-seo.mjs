@@ -72,7 +72,7 @@ assert.ok(
   existsSync("out/googleb0b2b1f2b08d3229.html"),
   "Existing verification file preserved",
 );
-assert.ok(existsSync("out/hurkify-logo.jpeg"), "Existing favicon preserved");
+assert.ok(existsSync("out/hurkify-icon.png"), "H icon favicon included");
 console.log(
   "SEO smoke checks passed: 3 pages, canonical URLs, titles, headings, anchors, schema JSON, sitemap, robots, verification file and favicon.",
 );

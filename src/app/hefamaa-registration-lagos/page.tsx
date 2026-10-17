@@ -1,6 +1,7 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   ArrowUpRight,
+  Building2,
   Check,
   ClipboardCheck,
   FileCheck2,
@@ -10,6 +11,9 @@ import {
   RefreshCcw,
 } from "lucide-react";
 import { EnquiryForm } from "@/components/enquiry-form";
+import { HefamaaExplainer } from "@/components/hefamaa-explainer";
+import { QuestionBox } from "@/components/question-box";
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { StructuredData } from "@/components/structured-data";
 import { buttonVariants } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/seo";
@@ -132,7 +136,7 @@ const FAQS = [
 function Checklist({ title, items }: { title: string; items: string[] }) {
   return (
     <article className="rounded-2xl border border-mist-200 bg-white p-6 sm:p-8">
-      <h3 className="text-xl font-bold text-secondary">{title}</h3>
+      <h3 className="text-xl font-semibold text-primary">{title}</h3>
       <ul className="mt-6 space-y-4">
         {items.map((item) => (
           <li
@@ -150,7 +154,7 @@ function Checklist({ title, items }: { title: string; items: string[] }) {
 
 export default function HefamaaPage() {
   return (
-    <>
+    <div className="hefamaa-page">
       <StructuredData
         data={{
           "@context": "https://schema.org",
@@ -260,95 +264,109 @@ export default function HefamaaPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 lg:grid-cols-2 lg:px-10">
-          <div>
-            <p className="eyebrow">Understanding HEFAMAA</p>
-            <h2 className="section-title">
-              Know the regulator.
-              <br />
-              Prepare with confidence.
-            </h2>
-          </div>
-          <div className="space-y-4 text-base leading-relaxed text-mist-600">
-            <p>
-              The Health Facilities Monitoring and Accreditation Agency
-              regulates healthcare facilities in Lagos State, including setting
-              standards and inspecting, registering, and licensing facilities.
-              Registration and renewal help facilities demonstrate their status
-              under the applicable regulatory process.
-            </p>
-            <p className="rounded-xl border border-primary/15 bg-primary/5 p-5 text-sm text-secondary">
-              <strong>Hurkify is an independent service provider.</strong> We
-              are not HEFAMAA or a Lagos State Government agency, and we do not
-              issue regulatory certificates or guarantee approval.
-            </p>
-            <a
-              href="https://hefamaa.lagosstate.gov.ng/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-primary"
-            >
-              Visit the official HEFAMAA website <ArrowUpRight size={16} />
-            </a>
-          </div>
-        </div>
-      </section>
+      <HefamaaExplainer />
 
-      <section className="bg-mist-50 py-20">
+      <section className="border-y border-mist-200 bg-mist-50 py-16 sm:py-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <p className="eyebrow">How we can help</p>
-          <h2 className="section-title">
-            Support for each stage of the process.
-          </h2>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:gap-16">
+            <div>
+              <p className="eyebrow">How we can help</p>
+              <h2 className="section-title">
+                Support for <span className="text-primary">each stage</span> of
+                the process.
+              </h2>
+            </div>
+            <p className="max-w-md text-sm leading-relaxed text-mist-600 lg:justify-self-end">
+              From the first document review to your next renewal, choose
+              practical support around the stage your facility has reached.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-x-10 sm:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map(({ icon: Icon, title, text }) => (
               <article
                 key={title}
-                className="rounded-2xl border border-mist-200 bg-white p-7"
+                className="group grid grid-cols-[32px_1fr] items-start gap-4 border-t border-mist-200 py-6"
               >
-                <Icon size={24} className="text-primary" />
-                <h3 className="mt-5 text-lg font-bold text-secondary">
-                  {title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-mist-600">
-                  {text}
-                </p>
+                <Icon
+                  size={23}
+                  strokeWidth={1.5}
+                  aria-hidden
+                  className="mt-0.5 text-primary"
+                />
+                <div>
+                  <h3 className="text-base font-semibold leading-snug text-secondary">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-mist-600">
+                    {text}
+                  </p>
+                </div>
               </article>
             ))}
           </div>
+          <a
+            href="#consultation"
+            className="mt-5 inline-flex min-h-11 items-center gap-3 border-b border-primary/25 text-sm font-semibold text-primary hover:border-primary"
+          >
+            Find the right support for your facility{" "}
+            <ArrowUpRight size={16} aria-hidden />
+          </a>
         </div>
       </section>
 
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <p className="eyebrow">Facilities supported</p>
-          <h2 className="section-title">
-            Guidance that starts with your facility.
-          </h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-mist-600">
-            Hospitals, clinics, specialist facilities, maternity facilities,
-            diagnostic centres, and other applicable healthcare establishments
-            can request a consultation. Requirements differ by facility
-            category.
-          </p>
-          <div className="mt-7 flex flex-wrap gap-3">
-            {[
-              "Hospitals",
-              "Clinics",
-              "Specialist facilities",
-              "Maternity facilities",
-              "Diagnostic centres",
-              "Other applicable facilities",
-            ].map((name) => (
-              <span
-                key={name}
-                className="rounded-full border border-mist-200 bg-mist-50 px-5 py-2 text-sm text-secondary"
-              >
-                {name}
-              </span>
-            ))}
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto grid max-w-7xl items-start gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
+          <div>
+            <p className="eyebrow">Facilities supported</p>
+            <h2 className="section-title">
+              Different facilities.
+              <br />
+              <span className="text-primary">Considered support.</span>
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-mist-600">
+              Hospitals, clinics, specialist facilities, maternity facilities,
+              diagnostic centres, and other applicable healthcare establishments
+              can request a consultation. Requirements differ by facility
+              category.
+            </p>
+            <p className="mt-5 max-w-md border-l-2 border-primary/25 pl-4 text-xs leading-relaxed text-mist-600">
+              Your facility category shapes the preparation. We clarify the
+              support you need before agreeing the scope of work.
+            </p>
           </div>
+          <ul className="grid gap-x-8 sm:grid-cols-2">
+            {[
+              ["Hospitals", "Preparation across facility records and teams"],
+              ["Clinics", "Support around your registration stage"],
+              ["Specialist facilities", "Guidance for your service category"],
+              [
+                "Maternity facilities",
+                "Organised documentation and next steps",
+              ],
+              ["Diagnostic centres", "A review of applicable requirements"],
+              ["Other facilities", "Start with a category consultation"],
+            ].map(([name, detail]) => (
+              <li
+                key={name}
+                className="flex items-start gap-3 border-t border-mist-200 py-5"
+              >
+                <Building2
+                  size={18}
+                  strokeWidth={1.5}
+                  aria-hidden
+                  className="mt-0.5 shrink-0 text-primary/75"
+                />
+                <div>
+                  <h3 className="text-sm font-semibold text-secondary">
+                    {name}
+                  </h3>
+                  <p className="mt-1.5 text-xs leading-relaxed text-mist-600">
+                    {detail}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -356,7 +374,8 @@ export default function HefamaaPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <p className="eyebrow">Registration requirements</p>
           <h2 className="section-title">
-            A starting checklist for your documents.
+            A starting checklist for{" "}
+            <span className="text-primary">your documents.</span>
           </h2>
           <p className="mt-5 max-w-3xl text-base leading-relaxed text-mist-600">
             The checklist summarises the agency&apos;s published portal
@@ -393,22 +412,46 @@ export default function HefamaaPage() {
         </div>
       </section>
 
-      <section className="bg-white py-20">
-        <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <p className="eyebrow">Our process</p>
-          <h2 className="section-title">
-            Practical support, one step at a time.
-          </h2>
-          <ol className="mt-10 grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto grid max-w-7xl items-start gap-10 px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-10">
+          <div className="lg:sticky lg:top-28">
+            <p className="eyebrow">Our process</p>
+            <h2 className="section-title">
+              Practical support,{" "}
+              <span className="text-primary">one step at a time.</span>
+            </h2>
+            <p className="mt-5 max-w-md text-sm leading-relaxed text-mist-600">
+              A clear sequence, shared responsibilities, and an organised view
+              of what comes next. We agree on the scope before preparation
+              begins.
+            </p>
+            <a
+              href="#consultation"
+              className="mt-6 inline-flex min-h-11 items-center gap-3 border-b border-primary/25 text-sm font-semibold text-primary hover:border-primary"
+            >
+              Start with a consultation <ArrowUpRight size={16} aria-hidden />
+            </a>
+          </div>
+          <ol className="divide-y divide-mist-200 border-y border-mist-200">
             {PROCESS.map(([title, text], i) => (
-              <li key={title} className="border-t border-mist-200 pt-6">
-                <span className="text-sm font-bold text-primary">0{i + 1}</span>
-                <h3 className="mt-4 text-lg font-bold text-secondary">
-                  {title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-mist-600">
-                  {text}
-                </p>
+              <li
+                key={title}
+                className="grid grid-cols-[32px_1fr] gap-4 py-6 sm:grid-cols-[40px_1fr] sm:gap-6"
+              >
+                <span
+                  aria-hidden
+                  className="font-display text-xl font-medium leading-snug tracking-tight text-primary/60"
+                >
+                  0{i + 1}
+                </span>
+                <div>
+                  <h3 className="text-base font-semibold text-secondary">
+                    {title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-mist-600">
+                    {text}
+                  </p>
+                </div>
               </li>
             ))}
           </ol>
@@ -424,7 +467,9 @@ export default function HefamaaPage() {
             <h2 className="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl">
               Keep your next renewal
               <br />
-              on your team&apos;s agenda.
+              <span className="text-[#c9b2ff]">
+                on your team&apos;s agenda.
+              </span>
             </h2>
           </div>
           <div>
@@ -448,7 +493,8 @@ export default function HefamaaPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <p className="eyebrow">Why choose Hurkify</p>
           <h2 className="section-title">
-            A practical partner for your preparation.
+            A practical partner for{" "}
+            <span className="text-primary">your preparation.</span>
           </h2>
           <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
@@ -521,6 +567,7 @@ export default function HefamaaPage() {
           <EnquiryForm kind="hefamaa" />
         </div>
       </section>
+      <QuestionBox />
       <section className="bg-mist-50 py-14">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <div>
@@ -545,13 +592,17 @@ export default function HefamaaPage() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className={buttonVariants({ variant: "secondary" })}
+              className={cn(
+                buttonVariants(),
+                "bg-[#25D366] text-[#052e16] hover:bg-[#20bd5a] focus-visible:ring-[#25D366]",
+              )}
             >
+              <WhatsAppIcon />
               WhatsApp us
             </a>
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

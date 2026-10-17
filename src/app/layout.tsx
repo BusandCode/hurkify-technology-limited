@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     "EMR systems Nigeria",
   ],
   icons: {
-    icon: [{ url: "/hurkify-logo.jpeg?v=1", type: "image/jpeg" }],
-    shortcut: "/hurkify-logo.jpeg?v=1",
-    apple: "/hurkify-logo.jpeg?v=1",
+    icon: [{ url: "/hurkify-icon.png?v=2", type: "image/png" }],
+    shortcut: "/hurkify-icon.png?v=2",
+    apple: "/hurkify-icon.png?v=2",
   },
   openGraph: {
     title: "Hurkify Technology Limited",

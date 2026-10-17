@@ -45,7 +45,25 @@ export default function PrivacyPage() {
         </section>
         <section>
           <h2 className="mb-3 text-xl font-bold text-secondary">
-            Submitting a form
+            Healthcare community
+          </h2>
+          <p>
+            When enabled, the healthcare community uses Supabase to store shared
+            questions and replies. Google sign-in identifies contributors;
+            Supabase stores the authentication session in your browser. Your
+            display name, contribution, and posting date are visible publicly
+            after review. Your email address is not included in the public
+            discussion table. Pending contributions are visible to you and
+            authorised moderators. These posts are not sent through Formspree.
+            Do not post patient information or confidential documents. Contact
+            us to request removal of your contributions. Supabase may process
+            data outside Nigeria; see{" "}
+            <a href="https://supabase.com/privacy" className="text-primary underline" target="_blank" rel="noopener noreferrer">Supabase&apos;s privacy policy</a>.
+          </p>
+        </section>
+        <section>
+          <h2 className="mb-3 text-xl font-bold text-secondary">
+            Submitting an enquiry form
           </h2>
           <p>
             When online submissions are enabled and you press send, your details

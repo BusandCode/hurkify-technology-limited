@@ -7,7 +7,7 @@ const TEAM = [
     role: "Founder & CEO",
     focus: "Leadership & technical direction",
     icon: Compass,
-    bio: "Guides project strategy and engineering, with a focus on practical digital solutions for businesses and healthcare providers.",
+    bio: "Connecting business strategy with practical technology.",
     image: "/hurkify-founder.webp",
   },
   {
@@ -15,7 +15,7 @@ const TEAM = [
     role: "Full Stack Developer",
     focus: "Software engineering",
     icon: Code2,
-    bio: "Builds web and mobile products end to end, connecting clear interfaces with the APIs and data that power them.",
+    bio: "Turning product ideas into connected digital experiences.",
     image: "/busandcode.webp",
   },
   {
@@ -23,7 +23,7 @@ const TEAM = [
     role: "Lead UI/UX Designer",
     focus: "Product & experience design",
     icon: PenTool,
-    bio: "Turns complex workflows into clear, user-friendly experiences through thoughtful interface and interaction design.",
+    bio: "Making complex workflows feel clear and intuitive.",
     image: "/bukunmi.webp",
   },
 ];
@@ -48,13 +48,17 @@ export function Team() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+        <div className="mt-9 grid gap-4 lg:grid-cols-3">
           {TEAM.map(({ name, role, focus, icon: Icon, bio, image }) => (
             <article
               key={name}
-              className="flex h-full flex-col rounded-2xl border border-mist-200 bg-mist-50/60 p-6 transition-colors hover:border-primary/30 sm:p-7"
+              className="group relative flex h-full flex-col overflow-hidden rounded-xl border border-mist-200 bg-white p-4 transition-colors hover:border-primary/40 hover:bg-primary/[0.02] sm:p-5"
             >
-              <div className="grid grid-cols-[72px_minmax(0,1fr)] items-center gap-4 sm:grid-cols-[88px_minmax(0,1fr)] lg:min-h-28">
+              <span
+                aria-hidden
+                className="absolute right-0 top-0 h-px w-20 bg-linear-to-l from-primary/60 to-transparent"
+              />
+              <div className="grid grid-cols-[72px_minmax(0,1fr)] items-center gap-3 sm:grid-cols-[88px_minmax(0,1fr)] sm:gap-4">
                 <div className="relative h-[72px] w-[72px] overflow-hidden rounded-2xl border border-primary/10 bg-mist-100 sm:h-[88px] sm:w-[88px]">
                   <Image
                     src={image}
@@ -68,16 +72,20 @@ export function Team() {
                   <h3 className="font-display text-base font-bold leading-snug tracking-tight text-secondary">
                     {name}
                   </h3>
-                  <p className="mt-1.5 text-xs font-semibold leading-relaxed text-primary">
+                  <p className="mt-1 text-xs font-semibold leading-relaxed text-primary">
                     {role}
                   </p>
                 </div>
               </div>
-              <p className="mb-6 mt-5 flex-1 text-sm leading-relaxed text-mist-600">
+              <p className="mb-4 mt-4 flex-1 text-xs leading-relaxed text-mist-600">
                 {bio}
               </p>
-              <div className="flex items-center gap-2.5 border-t border-mist-200 pt-4 text-[11px] font-medium leading-relaxed text-mist-600">
-                <Icon aria-hidden size={15} className="shrink-0 text-primary" />
+              <div className="flex items-center gap-2 border-t border-mist-200/70 pt-3 text-[11px] font-medium leading-relaxed text-mist-600">
+                <Icon
+                  aria-hidden
+                  size={14}
+                  className="shrink-0 text-primary transition-transform group-hover:-rotate-12 motion-reduce:transform-none motion-reduce:transition-none"
+                />
                 <span>{focus}</span>
               </div>
             </article>
