@@ -1,0 +1,4 @@
+﻿[functions.community-moderation]
+# Public email confirmation links; webhook and actions authenticate themselves.
+verify_jwt = false
+entrypoint = "./functions/community-moderation/index.js"

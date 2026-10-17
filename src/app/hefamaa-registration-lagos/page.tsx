@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { HefamaaExplainer } from "@/components/hefamaa-explainer";
-import { QuestionBox } from "@/components/question-box";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { StructuredData } from "@/components/structured-data";
 import { buttonVariants } from "@/components/ui/button";
@@ -20,6 +19,7 @@ import { pageMetadata } from "@/lib/seo";
 import {
   HEFAMAA_GUIDE,
   HEFAMAA_PATH,
+  COMMUNITY_PATH,
   SITE_URL,
   WHATSAPP_URL,
   BUSINESS_EMAIL,
@@ -567,7 +567,33 @@ export default function HefamaaPage() {
           <EnquiryForm kind="hefamaa" />
         </div>
       </section>
-      <QuestionBox />
+      <section
+        id="questions"
+        className="scroll-mt-24 border-y border-mist-200 bg-mist-50 py-12"
+      >
+        <div className="mx-auto flex max-w-7xl flex-col items-start gap-6 px-6 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+          <div>
+            <p className="eyebrow">Hurkify healthcare community</p>
+            <h2 className="mt-3 text-xl text-secondary">
+              A question others might share?
+            </h2>
+            <p className="mt-3 max-w-xl text-sm leading-relaxed text-mist-600">
+              Ask a question, read public replies, and learn from other
+              healthcare teams in our dedicated community.
+            </p>
+          </div>
+          <Link
+            href={COMMUNITY_PATH}
+            className={cn(
+              buttonVariants(),
+              "shrink-0 bg-primary text-white hover:bg-secondary",
+            )}
+          >
+            Ask the community
+            <ArrowUpRight size={18} aria-hidden />
+          </Link>
+        </div>
+      </section>
       <section className="bg-mist-50 py-14">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 sm:flex-row sm:items-center sm:justify-between lg:px-10">
           <div>

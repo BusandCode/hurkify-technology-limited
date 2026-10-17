@@ -13,6 +13,7 @@ import {
   BUSINESS_EMAIL,
   BUSINESS_PHONE,
   HEFAMAA_PATH,
+  COMMUNITY_PATH,
   WHATSAPP_URL,
 } from "@/lib/site";
 
@@ -23,6 +24,7 @@ const COMPANY_LINKS = [
   { label: "Meet the team", href: "/#team" },
 ];
 const SERVICE_LINKS = [
+  { label: "HEFAMAA support community", href: COMMUNITY_PATH },
   { label: "Software & websites", href: "/#services" },
   { label: "IT consulting & support", href: "/#services" },
   { label: "HEFAMAA registration", href: HEFAMAA_PATH },

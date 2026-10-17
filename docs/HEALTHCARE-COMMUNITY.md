@@ -24,3 +24,15 @@ Live acceptance checks after setup (not yet performed):
 - Test failed requests and verify no success appears without database acknowledgement.
 
 The owner ran the SQL successfully in the Supabase project. The public table endpoint was verified to return HTTP 200 with an empty list, and Google authentication was verified as enabled. Local public connection values are configured in the ignored `.env.local`; configure these in the hosting/build environment too. Full Google sign-in, posting, moderation, cross-account visibility, and database access-control acceptance tests remain outstanding.
+
+## Community search landing page
+
+The dedicated page is `/hefamaa-support-community/`. It has server-rendered introductory content, a canonical URL, CollectionPage metadata, a sitemap entry, and links from the guide and footer. All community reading, sign-in, posting, and replies happen on this page. The guide has an “Ask the community” link instead of a duplicate discussion box; its `#questions` anchor remains for existing links.
+
+Add these Supabase Authentication > URL Configuration > Redirect URLs before testing Google sign-in on this page:
+- `http://localhost:3000/hefamaa-support-community/`
+- `https://hurkifytechologylimited.com/hefamaa-support-community/`
+
+Keep the existing guide redirects too. The Google Cloud callback stays the Supabase `/auth/v1/callback` URL.
+
+After production deployment, inspect the community URL in Google Search Console, request indexing, and submit the updated sitemap. Localhost is not discoverable by Google. Indexing and rankings are not guaranteed. Discussion posts currently load through the browser, and individual threads do not yet have crawlable permanent URLs; the dedicated landing page is indexable, but individual question indexing is not implemented. Do not claim question-level SEO or instant search visibility. No Google indexing submission or production deployment has been performed.

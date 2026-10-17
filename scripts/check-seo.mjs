@@ -3,6 +3,11 @@ import { readFileSync, existsSync } from "node:fs";
 const base = "https://hurkifytechologylimited.com";
 const pages = [
   [
+    "out/hefamaa-support-community/index.html",
+    "/hefamaa-support-community/",
+    "HEFAMAA Support Community | Questions & Answers | Hurkify",
+  ],
+  [
     "out/index.html",
     "/",
     "Hurkify Technology Limited | IT Consulting & Healthcare Technology",
@@ -19,7 +24,7 @@ const pages = [
   ],
 ];
 const sitemap = readFileSync("out/sitemap.xml", "utf8");
-const home = readFileSync(pages[0][0], "utf8");
+const home = readFileSync("out/index.html", "utf8");
 const homeIds = new Set([...home.matchAll(/\bid="([^"]+)"/g)].map((m) => m[1]));
 for (const [file, path, title] of pages) {
   const html = readFileSync(file, "utf8");
@@ -74,5 +79,5 @@ assert.ok(
 );
 assert.ok(existsSync("out/hurkify-icon.png"), "H icon favicon included");
 console.log(
-  "SEO smoke checks passed: 3 pages, canonical URLs, titles, headings, anchors, schema JSON, sitemap, robots, verification file and favicon.",
+  `SEO smoke checks passed: ${pages.length} pages, canonical URLs, titles, headings, anchors, schema JSON, sitemap, robots, verification file and favicon.`,
 );
