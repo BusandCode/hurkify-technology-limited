@@ -221,7 +221,7 @@ export function QuestionBox() {
                   setLoading(true);
                   setNotice("");
                 }}
-                className="mt-3 inline-flex min-h-10 items-center gap-2 text-xs font-semibold text-primary"
+                className="inline-flex min-h-10 items-center gap-2 text-xs font-semibold text-primary"
               >
                 View conversation <ArrowUpRight aria-hidden size={14} />
               </button>
