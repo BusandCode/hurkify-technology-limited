@@ -21,6 +21,18 @@ Created with the **built-in image_gen tool**, not the CLI. Outputs were visually
 
 Project-bound files:
 
+- The "Your next idea. Our next challenge." billboard uses `public/visuals/billboard-united-vision.webp`, supplied by the owner on 19 October 2026 as `Complex Ideas, United Vision.png`. Converted to WebP at 1254 by 1254 pixels (248,284 bytes), replacing the original idea image in the carousel.
+
+- The "Complex challenges. Clear digital solutions." billboard uses `public/visuals/billboard-digital-transformation.webp`, supplied by the owner on 19 October 2026 as `From Chaos to Clarity_ Digital Transformation.png`. Converted to WebP at 1254 by 1254 pixels (240,252 bytes), replacing the original clarity image in the carousel.
+
+- The "Imagine more. Build what matters." billboard uses `public/visuals/billboard-build-team.webp`, supplied by the owner on 19 October 2026 as `Startup Team Brainstorming at Sunset.png`. Converted to WebP at 1254 by 1254 pixels (246,602 bytes), replacing the original build image in the carousel.
+
+- The "Creative thinking. Useful technology." billboard uses `public/visuals/billboard-creative-teamwork.webp`, supplied by the owner on 19 October 2026 as `Creative Teamwork at Sunset.png`. Converted to WebP at 1254 by 1254 pixels (238,752 bytes), replacing the original creative image in the carousel.
+
+- The "Bold ideas. Practical innovation." billboard uses `public/visuals/billboard-startup-brainstorm.webp`, supplied by the owner on 19 October 2026 as `Purple-Hued Startup Brainstorming Session.png`. Converted to WebP at 1254 by 1254 pixels (213,370 bytes), replacing the original innovation image in the carousel.
+
+- The "Better systems. Stronger businesses." billboard now uses `public/visuals/billboard-skyline-workspace.webp`, supplied by the owner on 19 October 2026 as `Purple-Powered Skyline Workspace.png`. Converted to WebP at 1254 by 1254 pixels (159,638 bytes). This replaces the original technology workspace image in the carousel.
+
 - `public/visuals/technology-workspace.webp` — 1200 × 800, 81,258 bytes.
 - `public/visuals/healthcare-workspace.webp` — 1200 × 800, 62,770 bytes.
 - Full-resolution source copies: `public/visuals/technology-workspace.png` and `public/visuals/healthcare-workspace.png`.

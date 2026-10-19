@@ -6,16 +6,16 @@ The first pair is pre-rendered. Later images load in advance at low fetch priori
 
 ## Saved project assets
 
-All five new images were created with the **built-in image_gen tool** and visually inspected. They are illustrative AI-generated scenes, not evidence of actual Hurkify premises, client products or equipment. Generated originals remain in the tool's output directory; project-bound WebP deliverables are saved below.
+All six current images were supplied by the owner on 19 October 2026 and converted to WebP. They replace the original generated workspace scenes. Source filenames and conversion details are recorded in `docs/VISUAL-ASSETS.md`; the earlier generation prompts below are retained as historical notes.
 
 | Headline | Image | Size |
 | --- | --- | --- |
-| Better systems. Stronger businesses. | `public/visuals/technology-workspace.webp` (existing) | 81,258 bytes |
-| Bold ideas. Practical innovation. | `public/visuals/billboard-innovation.webp` | 94,042 bytes |
-| Creative thinking. Useful technology. | `public/visuals/billboard-creative.webp` | 98,562 bytes |
-| Imagine more. Build what matters. | `public/visuals/billboard-build.webp` | 91,000 bytes |
-| Complex challenges. Clear digital solutions. | `public/visuals/billboard-clarity.webp` | 67,094 bytes |
-| Your next idea. Our next challenge. | `public/visuals/billboard-idea.webp` | 95,108 bytes |
+| Better systems. Stronger businesses. | `public/visuals/billboard-skyline-workspace.webp` | 159,638 bytes |
+| Bold ideas. Practical innovation. | `public/visuals/billboard-startup-brainstorm.webp` | 213,370 bytes |
+| Creative thinking. Useful technology. | `public/visuals/billboard-creative-teamwork.webp` | 238,752 bytes |
+| Imagine more. Build what matters. | `public/visuals/billboard-build-team.webp` | 246,602 bytes |
+| Complex challenges. Clear digital solutions. | `public/visuals/billboard-digital-transformation.webp` | 240,252 bytes |
+| Your next idea. Our next challenge. | `public/visuals/billboard-united-vision.webp` | 248,284 bytes |
 
 ## Final generation prompts
 
